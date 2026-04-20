@@ -15,20 +15,20 @@ const variantClasses = {
 
 /**
  * StatusChip — Floating pill-shaped status indicator.
- * Used for "Last seen today", "Activated true" style chips.
+ * Consistent sizing and spacing with the grid.
  */
 const StatusChip = ({ flag, className }: StatusChipProps) => {
   return (
     <div
       className={cn(
-        'inline-flex items-center gap-1 px-4 py-1.5 rounded-full text-sm font-medium',
-        'transition-transform duration-200 hover:scale-105 cursor-default',
+        'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-[13px] font-medium',
+        'transition-all duration-200 hover:scale-105 cursor-default',
+        'shadow-[0_1px_4px_rgba(0,0,0,0.05)]',
         variantClasses[flag.variant],
         className
       )}
     >
-      {/* Arrow indicator */}
-      <span className="text-xs">←</span>
+      <span className="text-xs opacity-60">←</span>
       <span>{flag.label}</span>
       <span className="font-bold">{flag.value}</span>
     </div>

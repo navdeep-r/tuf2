@@ -10,14 +10,13 @@ interface CustomerSummaryCardProps {
 }
 
 /**
- * CustomerSummaryCard — Company identity with key metrics.
- * Height-aligned with ActivationCard via h-full + flex.
+ * CustomerSummaryCard — h-full to match Row 1 height.
+ * border + shadow for consistent card look.
  */
 const CustomerSummaryCard = ({ company, metrics }: CustomerSummaryCardProps) => {
   return (
-    <Card className="h-full flex flex-col">
-      {/* Company header */}
-      <div className="flex items-center gap-3 mb-5">
+    <Card className="h-full flex flex-col border border-gray-100 p-5">
+      <div className="flex items-center gap-3 mb-4">
         <Avatar
           name={company.name}
           imageUrl={company.logoUrl}
@@ -28,7 +27,7 @@ const CustomerSummaryCard = ({ company, metrics }: CustomerSummaryCardProps) => 
           <h3 className="text-[15px] font-bold text-text-primary leading-tight">
             {company.name}
           </h3>
-          <p className="text-xs text-text-muted mt-0.5">
+          <p className="text-xs text-gray-400 mt-0.5">
             Joined {company.joinedDate}
           </p>
         </div>
@@ -37,7 +36,6 @@ const CustomerSummaryCard = ({ company, metrics }: CustomerSummaryCardProps) => 
         </div>
       </div>
 
-      {/* Metrics — flex-1 to fill remaining height */}
       <div className="flex-1 flex flex-col justify-center space-y-0">
         <MetricRow
           label="Total seats"

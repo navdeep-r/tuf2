@@ -10,21 +10,21 @@ interface MetricRowProps {
 
 /**
  * MetricRow — Key-value metric display in a horizontal row.
- * Used for displaying company stats like total seats, active seats, etc.
+ * Consistent padding and border styling.
  */
 const MetricRow = ({ label, value, icon, className }: MetricRowProps) => {
   return (
     <div
       className={cn(
-        'flex items-center justify-between py-2.5 border-b border-gray-50 last:border-b-0',
+        'flex items-center justify-between py-2 border-b border-gray-100 last:border-b-0',
         className
       )}
     >
-      <div className="flex items-center gap-2 text-text-secondary text-sm">
-        {icon && <span className="flex-shrink-0 text-text-muted">{icon}</span>}
+      <div className="flex items-center gap-2 text-gray-500 text-[13px]">
+        {icon && <span className="flex-shrink-0 text-gray-400">{icon}</span>}
         <span>{label}</span>
       </div>
-      <span className="text-sm font-semibold text-text-primary">{value}</span>
+      <span className="text-[13px] font-bold text-text-primary tabular-nums">{value}</span>
     </div>
   );
 };

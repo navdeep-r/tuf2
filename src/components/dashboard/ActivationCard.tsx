@@ -8,29 +8,26 @@ interface ActivationCardProps {
 }
 
 /**
- * ActivationCard — Company activation progress with step-based visualization.
- * Height-aligned with CustomerSummaryCard via h-full + flex.
+ * ActivationCard — h-full to match Row 1 height.
  */
 const ActivationCard = ({ activation }: ActivationCardProps) => {
   return (
-    <Card className="h-full flex flex-col">
-      {/* Header */}
-      <h3 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-1">
+    <Card className="h-full flex flex-col border border-gray-100 p-5">
+      <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">
         Company activation
       </h3>
-      <p className="text-[2.25rem] font-extrabold text-text-primary leading-none mb-5">
+      <p className="text-3xl font-extrabold text-text-primary leading-none mb-4">
         {formatPercentage(activation.overallPercentage)}
       </p>
 
-      {/* Steps — flex-1 to fill remaining height */}
-      <div className="space-y-3.5 flex-1 flex flex-col justify-center">
+      <div className="space-y-2.5 flex-1 flex flex-col justify-center">
         {activation.steps.map((step) => (
           <div key={step.label} className="flex items-center gap-3">
             <div
               className="w-2 h-2 rounded-full flex-shrink-0"
               style={{ backgroundColor: step.color }}
             />
-            <span className="text-[11px] text-text-secondary w-[5.5rem] flex-shrink-0">
+            <span className="text-[11px] text-gray-500 w-[5.5rem] flex-shrink-0 text-left">
               {step.label}
             </span>
             <div className="flex-1 min-w-0">

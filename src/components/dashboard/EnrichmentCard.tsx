@@ -15,59 +15,50 @@ interface EnrichmentCardProps {
   enrichment: EnrichmentData;
 }
 
-/** Map icon string names to Lucide components */
 const iconMap: Record<string, ReactNode> = {
-  globe: <Globe size={14} className="text-text-muted" />,
-  'map-pin': <MapPin size={14} className="text-text-muted" />,
-  users: <Users size={14} className="text-text-muted" />,
-  twitter: <AtSign size={14} className="text-text-muted" />,
-  'dollar-sign': <DollarSign size={14} className="text-text-muted" />,
+  globe: <Globe size={14} className="text-gray-400" />,
+  'map-pin': <MapPin size={14} className="text-gray-400" />,
+  users: <Users size={14} className="text-gray-400" />,
+  twitter: <AtSign size={14} className="text-gray-400" />,
+  'dollar-sign': <DollarSign size={14} className="text-gray-400" />,
   'check-circle': <CheckCircle size={14} className="text-accent-green" />,
 };
 
 /**
- * EnrichmentCard — AI-enriched company data fields on coral background.
- * Shows a badge and a 2-column grid of enriched fields with icons.
+ * EnrichmentCard — grid-cols-2 gap-6 for balanced two-column fields.
  */
 const EnrichmentCard = ({ enrichment }: EnrichmentCardProps) => {
   return (
     <div className="h-full flex flex-col">
-      {/* Section header */}
       <div className="flex items-start justify-between mb-1">
-        <h2 className="text-xl font-extrabold text-accent-purple">
+        <h2 className="text-[1.1rem] font-extrabold text-accent-purple">
           Automatic enrichment
         </h2>
-        {/* Decorative icon block */}
-        <div className="w-12 h-12 bg-accent-purple rounded-2xl flex items-center justify-center ml-4 flex-shrink-0">
-          <Sparkles size={20} className="text-white" />
+        <div className="w-10 h-10 bg-accent-purple rounded-xl flex items-center justify-center ml-4 flex-shrink-0">
+          <Sparkles size={16} className="text-white" />
         </div>
       </div>
-      <p className="text-[13px] text-text-secondary mb-5 leading-relaxed max-w-[380px]">
+      <p className="text-xs text-gray-500 mb-4 leading-relaxed">
         Automatically enrich your customers profiles and their users powered by GPT
       </p>
 
-      {/* Enrichment card body */}
-      <div className="bg-card-white rounded-[var(--radius-card)] shadow-[var(--shadow-card)] p-5 flex-1 transition-shadow duration-300 hover:shadow-[var(--shadow-card-hover)]">
-        {/* AI badge */}
+      <div className="bg-card-white rounded-2xl shadow-md border border-gray-100 p-5 flex-1">
         <div className="mb-4">
-          <Badge variant="teal" icon={<Sparkles size={11} />}>
+          <Badge variant="teal" className="px-2 py-0.5 text-[10px]" icon={<Sparkles size={10} />}>
             Enriched with AI
           </Badge>
         </div>
 
-        {/* Fields grid */}
-        <div className="grid grid-cols-2 gap-x-8 gap-y-3.5">
+        {/* Strict 2-col grid with gap-3 */}
+        <div className="grid grid-cols-2 gap-3">
           {enrichment.fields.map((field) => (
-            <div key={field.label} className="flex items-center gap-2.5 group">
-              {/* Icon */}
-              <span className="flex-shrink-0 opacity-60 group-hover:opacity-100 transition-opacity duration-200">
-                {iconMap[field.icon] || <Globe size={14} className="text-text-muted" />}
+            <div key={field.label} className="flex items-center gap-2 group">
+              <span className="flex-shrink-0 opacity-60">
+                {iconMap[field.icon] || <Globe size={14} className="text-gray-400" />}
               </span>
-              {/* Label */}
-              <span className="text-[11px] text-text-muted w-[4.5rem] flex-shrink-0">
+              <span className="text-[11px] text-gray-400 w-[4.5rem] flex-shrink-0">
                 {field.label}
               </span>
-              {/* Value */}
               <span
                 className={`text-[12px] font-semibold truncate ${
                   field.isHighlight ? 'text-accent-green' : 'text-text-primary'
