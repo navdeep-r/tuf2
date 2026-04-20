@@ -10,6 +10,9 @@ interface CRMCardProps {
  * CRMCard — flex justify-between rows, py-3 per row, numbers right-aligned.
  */
 const CRMCard = ({ crm }: CRMCardProps) => {
+  const totalSeats = crm.companies.reduce((sum, company) => sum + company.activeSeats, 0);
+  const netDelta = crm.companies.reduce((sum, company) => sum + company.delta, 0);
+
   return (
     <div className="h-full flex flex-col">
       <h2 className="text-[1.1rem] font-extrabold text-accent-purple mb-1">
@@ -39,6 +42,14 @@ const CRMCard = ({ crm }: CRMCardProps) => {
         </div>
 
         <div className="border-t border-gray-100 mb-1" />
+
+        <div className="flex items-center justify-between rounded-xl bg-gray-50 px-3 py-2 mb-2 text-[11px]">
+          <span className="text-gray-500">{crm.companies.length} accounts</span>
+          <span className="font-semibold text-text-primary">{totalSeats} seats</span>
+          <span className={netDelta >= 0 ? 'font-semibold text-accent-green' : 'font-semibold text-accent-red'}>
+            {formatDelta(netDelta)} net
+          </span>
+        </div>
 
         {/* Rows — py-2, flex justify-between */}
         <div className="space-y-0.5">

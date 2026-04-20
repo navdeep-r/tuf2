@@ -5,20 +5,26 @@ import { formatPercentage } from '../../utils/formatters';
 
 interface ActivationCardProps {
   activation: ActivationData;
+  totalSeats: number;
 }
 
 /**
  * ActivationCard — h-full to match Row 1 height.
  */
-const ActivationCard = ({ activation }: ActivationCardProps) => {
+const ActivationCard = ({ activation, totalSeats }: ActivationCardProps) => {
+  const activatedSeats = Math.round((activation.overallPercentage / 100) * totalSeats);
+
   return (
     <Card className="h-full flex flex-col border border-gray-100 p-5">
       <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">
         Company activation
       </h3>
-      <p className="text-3xl font-extrabold text-text-primary leading-none mb-4">
+      <div className="flex items-end justify-between mb-4">
+        <p className="text-3xl font-extrabold text-text-primary leading-none">
         {formatPercentage(activation.overallPercentage)}
-      </p>
+        </p>
+        <span className="text-[11px] text-gray-500">{activatedSeats}/{totalSeats} seats active</span>
+      </div>
 
       <div className="space-y-2.5 flex-1 flex flex-col justify-center">
         {activation.steps.map((step) => (
@@ -48,3 +54,8 @@ const ActivationCard = ({ activation }: ActivationCardProps) => {
 };
 
 export default ActivationCard;
+
+      <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px]">
+        <span className="text-gray-500">Next step: improve "Activated" milestone</span>
+        <span className="text-accent-blue font-semibold">View playbook</span>
+      </div>

@@ -43,10 +43,11 @@ const EnrichmentCard = ({ enrichment }: EnrichmentCardProps) => {
       </p>
 
       <div className="bg-card-white rounded-2xl shadow-md border border-gray-100 p-5 flex-1">
-        <div className="mb-4">
+        <div className="mb-4 flex items-center justify-between gap-3">
           <Badge variant="teal" className="px-2 py-0.5 text-[10px]" icon={<Sparkles size={10} />}>
             Enriched with AI
           </Badge>
+          <span className="text-[11px] text-gray-500">Confidence: <span className="font-semibold text-text-primary">High</span></span>
         </div>
 
         {/* Strict 2-col grid with gap-3 */}
@@ -68,6 +69,11 @@ const EnrichmentCard = ({ enrichment }: EnrichmentCardProps) => {
               </span>
             </div>
           ))}
+        </div>
+
+        <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-500">
+          <span>Sources: Website, LinkedIn, CRM</span>
+          <span className="text-accent-teal font-semibold">Auto-updated 5m ago</span>
         </div>
       </div>
     </div>

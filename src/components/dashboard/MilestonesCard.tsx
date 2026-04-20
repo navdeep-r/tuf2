@@ -64,6 +64,14 @@ const MilestonesCard = ({ milestone }: MilestonesCardProps) => {
             </div>
           ))}
         </div>
+
+        <div className="mt-3 rounded-xl border border-purple-100 bg-purple-50/60 px-3 py-2.5 flex items-center justify-between">
+          <div>
+            <p className="text-[10px] uppercase tracking-wider text-gray-400">Upcoming</p>
+            <p className="text-[11px] font-semibold text-text-primary mt-0.5">QBR prep reminder in 2 days</p>
+          </div>
+          <span className="text-[11px] text-accent-purple font-semibold">Set owner</span>
+        </div>
       </Card>
     </div>
   );

@@ -53,6 +53,14 @@ const CustomerSummaryCard = ({ company, metrics }: CustomerSummaryCardProps) => 
           icon={<Activity size={14} />}
         />
       </div>
+
+      <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-500">
+        <span>Industry: <span className="font-semibold text-text-primary">{company.industry ?? 'N/A'}</span></span>
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-mint px-2.5 py-1 text-accent-green font-semibold">
+          <span className="w-1.5 h-1.5 rounded-full bg-accent-green" />
+          Healthy account
+        </span>
+      </div>
     </Card>
   );
 };
