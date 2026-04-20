@@ -9,42 +9,38 @@ interface ActivationCardProps {
 
 /**
  * ActivationCard — Company activation progress with step-based visualization.
- * Shows overall percentage and individual step progress bars.
+ * Height-aligned with CustomerSummaryCard via h-full + flex.
  */
 const ActivationCard = ({ activation }: ActivationCardProps) => {
   return (
-    <Card className="h-full">
+    <Card className="h-full flex flex-col">
       {/* Header */}
-      <h3 className="text-sm font-semibold text-text-secondary mb-1">
+      <h3 className="text-xs font-semibold text-text-muted uppercase tracking-wider mb-1">
         Company activation
       </h3>
-      <p className="text-3xl font-bold text-text-primary mb-5">
+      <p className="text-[2.25rem] font-extrabold text-text-primary leading-none mb-5">
         {formatPercentage(activation.overallPercentage)}
       </p>
 
-      {/* Steps */}
-      <div className="space-y-3">
+      {/* Steps — flex-1 to fill remaining height */}
+      <div className="space-y-3.5 flex-1 flex flex-col justify-center">
         {activation.steps.map((step) => (
           <div key={step.label} className="flex items-center gap-3">
-            {/* Step icon dot */}
             <div
               className="w-2 h-2 rounded-full flex-shrink-0"
               style={{ backgroundColor: step.color }}
             />
-            {/* Label */}
-            <span className="text-xs text-text-secondary w-24 flex-shrink-0">
+            <span className="text-[11px] text-text-secondary w-[5.5rem] flex-shrink-0">
               {step.label}
             </span>
-            {/* Progress bar */}
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <ProgressBar
                 percentage={step.percentage}
                 color={step.color}
                 height="sm"
               />
             </div>
-            {/* Percentage value */}
-            <span className="text-xs font-semibold text-text-primary w-10 text-right">
+            <span className="text-[11px] font-bold text-text-primary w-9 text-right tabular-nums">
               {formatPercentage(step.percentage)}
             </span>
           </div>
