@@ -4,7 +4,7 @@ import {
   Globe,
   MapPin,
   Users,
-  Twitter,
+  AtSign,
   DollarSign,
   CheckCircle,
   Sparkles,
@@ -20,7 +20,7 @@ const iconMap: Record<string, ReactNode> = {
   globe: <Globe size={14} className="text-text-muted" />,
   'map-pin': <MapPin size={14} className="text-text-muted" />,
   users: <Users size={14} className="text-text-muted" />,
-  twitter: <Twitter size={14} className="text-text-muted" />,
+  twitter: <AtSign size={14} className="text-text-muted" />,
   'dollar-sign': <DollarSign size={14} className="text-text-muted" />,
   'check-circle': <CheckCircle size={14} className="text-accent-green" />,
 };
